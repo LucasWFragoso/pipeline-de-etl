@@ -11,8 +11,8 @@ def extract_ids_csv(csv):
     return user_ids
 
 
-def user():
+def users():
     ids = extract_ids_csv("data.csv")
     users = [user for id in ids if (user := get_user_api(id)) is not None]
 
-    print(json.dumps(users, indent=2))
+    return users
