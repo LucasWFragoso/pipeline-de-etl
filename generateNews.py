@@ -2,11 +2,9 @@ import os
 import openai
 from dotenv import load_dotenv
 from extractIds import users
-import time
 
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
-users_list = users()
 
 
 def generate_ai_news(user):
@@ -24,9 +22,3 @@ def generate_ai_news(user):
         ],
     )
     return completion.choices[0].message.content.strip('/"')
-
-
-for user in users_list:
-    news = generate_ai_news(user)
-    print(news)
-    time.sleep(20)
